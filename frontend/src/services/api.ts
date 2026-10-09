@@ -1,6 +1,8 @@
 import type { DeadlineReminderSettings, ReminderInterval, Task, TaskInput, TaskPatch, TaskQuery } from "./types";
 
-const BASE = "/api";
+// Use environment variable for API base URL, fallback to "/api" for local development
+// In production (Vercel), set VITE_API_BASE_URL to your backend URL (e.g., "https://api.yourapp.com")
+const BASE = import.meta.env.VITE_API_BASE_URL || "/api";
 
 export class ApiError extends Error {
   status: number;
@@ -28,7 +30,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   } catch {
     throw new ApiError(
       0,
-      `Cannot reach the TaskGuard backend at ${BASE}. Make sure it is running on 127.0.0.1:8000.`,
+      `Cannot reach the TaskGuard backend at ${BASE}. Make sure the backend is running and VITE_API_BASE_URL is set correctly.`,
     );
   }
 
