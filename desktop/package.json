@@ -1,0 +1,18 @@
+{
+  "name": "taskguard-desktop",
+  "productName": "TaskGuard",
+  "version": "0.1.0",
+  "description": "TaskGuard Electron desktop shell: backend lifecycle + real Windows notifications.",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "test": "node --test",
+    "icon": "node scripts/generate-icon.js",
+    "verify:notifications": "node scripts/verify-notifications.js"
+  },
+  "devDependencies": {
+    "electron": "^44.0.0"
+  }
+}
